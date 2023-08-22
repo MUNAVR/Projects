@@ -1,0 +1,155 @@
+@import url(../clash-display.css);
+
+:root {
+    --c-dark:#212529;
+    --c-brand:#4e57d4;
+    --c-brand-light:#6970dd;
+    --c-brand-rgb:60,70,150;
+    --c-body:#727272;
+    --font-base:"ClashDisplay",sans-serif;
+    --box-shadow: 0px  15px 25px rgba(0, 0, 0, 0.08);
+    --transition:all 0.5s ease;
+    
+
+}
+
+body {
+    font-family: var(--font-base);
+    line-height: 1.7;
+    color: var(--c-body);
+}
+
+h1, h2, h3, h4, h5, h6
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight:600;
+    color: var(--c-dark);
+}
+
+a{
+    text-decoration: none;
+    color: var(--c-brand);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--c-brand-light);
+}
+
+.section-padding {
+    padding-top: 140px;
+    padding-left: 140px;
+
+}
+
+.theme-shadow {
+    box-shadow: var(--box-shadow);
+}
+
+.navbar {
+    box-shadow: var(--box-shadow);
+}
+.navbar-nav .nav-link {
+    font-weight: 800;
+    color: var(--c-dark);
+}
+
+.navbar-nav .nav-link active {
+    color: var(--c-brand);
+}
+
+.btn{
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 10px 24px;
+}
+
+.btn-brand {
+    background-color: var(--c-brand);
+    border-color: var(--c-brand);
+    color: white;
+}
+
+.btn-brand:hover {
+    background-color: var(--c-brand-light);
+    border-color: var(--c-brand-light);
+}
+
+#hero {
+    background: linear-gradient(rgba(var(--c-brand-rgb),  0.100),  rgba(var(--c-brand-rgb),  0.100)),  url(cta-bg.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+.section-title {
+    margin-bottom: 60px;
+
+}
+
+.section-title.line{
+    width: 60px;
+    height: 4px;
+    background-color: var(--c-brand);
+    margin: auto;
+}
+
+.section-title p{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.iconbox{
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    justify-content: center;
+    background: linear-gradient();
+}
+
+.service{
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+
+}
+
+.service::after{
+    content:"";
+    width: 40px;
+    height: 40px;
+    background: rgba(var(--c-brand-rgb),  20.2);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: var(--transition);
+}
+
+.service:hover::after{
+    width: 100%;
+    height: 100%;
+    background: var(--c-brand);
+    z-index: -1;
+
+}
+
+.service:hover h5,
+.service:hover p{
+    color: white;
+}
+
+.service:hover .iconbox{
+    background-color: rgba(225, 255, 255, 0.2);
+    color: white;
+}
+
+#counter{
+    background: linear-gradient(rgba(var(--c-brand-rgb),  0.8),  rgba(var(--c-brand-rgb),  0.8)),  url(tabs-3.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+

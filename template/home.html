@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index_homepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body  data-spy="scroll" data-target=".navbar">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark ticky-top">
+<div class="container">
+  <a class="navbar-brand text-white" >EasyHire.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav active ml-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/homejobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/candidates">Candidates</a>
+      </li>
+      <li class="nav-item">
+        <!-- <a class="nav-link" href="#">About</a> -->
+      
+      <li class="nav-item">
+        <!-- <a class="nav-link" href="#">Contact</a> -->
+      </li>
+    </ul>&nbsp&nbsp&nbsp
+    <!-- <a href="/usignin" class="btn btn-brand ms-lg-3">Login</a> -->
+  </div>
+</div>
+</nav>
+
+<section id="hero" class="min-vh-100 d-flex align-items-center text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-white fw-semibold display-1">Welcome to EasyHire</h1>
+        <h5 class="text-white mt-3 mb-4">India's Largest Job Portal</h5>
+        <div>
+          <a href="/usignin" class="btn btn-brand me-2">Get A Job</a> &nbsp;
+          <a href="/csignin" class="btn btn-light ms-2">Hire Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-padding">
+  <div class="container">
+    <div class="row" >
+      <div class="col-12  text-center">
+        <div class="section-title">
+          <h1 class="display-4 fw-semibold">About us</h1>
+          <div class="line"></div>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
+             Sit sint consectetur velit. .</p>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-lg-6" order-1 order-lg-2 text-center data-aos="fade-up" data-aos-delay="200" >
+        <img src="{% static 'ccs/tabs-3.jpg' %}" alt="" class="img-fluid">
+      </div>
+        <div class="col-lg-5">
+        <h1>EasyHire</h1>
+        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+           et dolore magna aliqua. Duis aute irure dolor in reprehenderit</P>
+        <div>
+        <div>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section-padding border-top">
+    <div class="container">
+      <dib class="row" >
+        <div class="col-12  text-center">
+          <div class="section-title">
+            <h1 class="display-4 fw-semibold">What Make EasyHire Better</h1>
+            <div class="line"></div>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
+               Sit sint consectetur velit. .</p>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 text-center">
+        <div class="col-lg-4 col-sm-6">
+          <div class="service theme-shadow padding-lg-5 p-4">
+            <div class="iconbox">
+               <i class="ri-megaphone-fill"></i>
+            </div>
+            <div>
+              <h5 class="mt-2 mb-2">Simple Hiring</h5>
+              <p>Reciving calls from qualified candidates in under an hour of posting a job</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="service theme-shadow padding-lg-5 p-4">
+            <div class="iconbox">
+              <i class="ri-computer-fill"></i>
+            </div>
+            <div>
+              <h5 class="mt-2 mb-2">Inteligent Recomendations</h5>
+              <p>Only the best candidates are recomended by our me as per year requierd</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="service theme-shadow padding-lg-5 p-4">
+            <div class="iconbox">
+              <i class="ri-phone-fill"></i>
+            </div>
+            <div>
+              <h5 class="mt-2 mb-2">Priority Customer Support</h5>
+              <p>Priority customer Support for the paid plan users</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section><br><br><br>
+
+        
+          
+<section id="counter" class="section-padding">
+  <div class="container text-center">
+    <div class="row g-4">
+      <div class="col-lg-3 col-sm-6">
+        <h1 class="text-white display-4">2Cr + </h1>
+        <h6 class="text-uppercase mb-0 text-white mt-3">Qualified Candidates</h6>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <h1 class="text-white display-4">34L + </h1>
+        <h6 class="text-uppercase mb-0 text-white mt-3">Interview per month</h6>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <h1 class="text-white display-4">750 +</h1>
+        <h6 class="text-uppercase mb-0 text-white mt-3">citiez in India</h6>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <h1 class="text-white display-4">1000 + </h1>
+        <h6 class="text-uppercase mb-0 text-white mt-3">Trusted Companies</h6>
+      </div>
+    </div>
+  </div>
+</section><br><br><br>
+
+
+<footer class="bg-dark">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col=lg-3 col-sm-6">
+          <a href="#"><img src="/" alt=""></a>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" 
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>singup_userpage</title>
+    <link rel="stylesheet" href="{% static 'css/companyup.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <form action="signc"></form>
+    <form id="formid" action="csignup" method="POST">
+        {%csrf_token%}
+        <section class="vh-60 gradient-custom">
+            <div class="container py-5 h-60">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                  <div class="card bg-dark text-white shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-1 pb-2 pb-md-0 mb-md-4">Create New Account</h3>
+    
+                      <form>
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input type="text" name="company_name" placeholder="Company Name" id="firstName" class="form-control form-control-lg" />
+                              <span class="error_form" id="ferror"></span>
+                            </div>
+                          </div>
+    
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input type="text"  name="uname"  id="uname" placeholder="User Name" class="form-control form-control-lg" />
+                              <span class="error_form" id="uerror"></span>
+                              
+                            </div>
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-4 d-flex align-items-center">
+                            <div class="form-outline datepicker w-100">
+                              <input type="text"  name="location" placeholder="Location" class="form-control form-control-lg" id="location"/>
+                              <span class="error_form" id="lerror"></span>
+                              
+                            </div>
+                          </div>
+                        
+                            <div class="col-md-6 mb-4 d-flex align-items-center">
+                              <div class="form-outline datepicker w-80">
+                                <input type="text" name="type" placeholder="Company Type"  class="form-control form-control-lg" id="type" />
+                                <span class="error_form" id="terror"></span>
+                                
+                              </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                          <div class="col-md-6 mb-4 pb-1">
+                            <div class="form-outline">
+                              <input type="email"  name="email" id="emailAddress" placeholder="Email" class="form-control form-control-lg" />
+                              <span class="error_form" id="eerror"></span>
+                              
+                            </div>
+                          </div>
+    
+                          <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                              <input type="tel" id="phoneNumber" placeholder="Phone Number" name="number" class="form-control form-control-lg" />
+                              <span class="error_form" id="perror"></span>
+                              
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="row">
+                          <div class="col-md-6 mb-4 d-flex align-items-center">
+                            <div class="form-outline datepicker w-100">
+                              <textarea name="address"  placeholder="Company Address" id="address" class="form-control form-control-lg"></textarea>
+                              <span class="error_form" id="aerror"></span>
+                              
+                            </div>
+                          </div>
+                        
+    
+                        
+                          <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                              <input type="file"  name="photo" placeholder="Company Logo" class="form-control form-control-lg" />
+                              </div>
+                          </div>
+                        </div>
+    
+          
+                        <div class="row">
+                            <div class="col-md-6 mb-4 d-flex align-items-center">
+                              <div class="form-outline datepicker w-80">
+                                <input type="text" name="password" class="form-control form-control-lg" placeholder="password" id="pass" />
+                                <span class="error_form" id="passerror"></span>                               
+                              </div>
+                            </div>
+                        </div>
+    
+                        <div class=" pt-1" >
+                          <input class="btn btn-primary btn-lg" type="submit" value="Submit" />                        
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </form>
+    <script type="text/javascript">
+      $(function(){
+
+        $("#ferror").hide();
+        $("#uerror").hide();
+        $("#lerror").hide();
+        $("#terror").hide();
+        $("#eerror").hide();
+        $("#perror").hide();
+        $("#aerror").hide();
+        $("#passerror").hide();
+
+        var error_fname =false;
+        var error_uname = false;
+        var error_loc = false;
+        var error_email = false;
+        var error_type= false;
+        var error_phone= false;
+        var error_add= false;
+        var error_pass = false;
+
+        $("#firstName").focusout(function(){
+          check_fname();
+        });
+
+        $("#uname").focusout(function(){
+          check_uname();
+        });
+
+        $("#location").focusout(function(){
+          check_location();
+        });
+
+        $("#type").focusout(function(){
+          check_type();
+        });
+
+        $("#emailAddress").focusout(function(){
+          check_email();
+        });
+
+        $("#phoneNumber").focusout(function(){
+          check_phone();
+        });
+
+        $("#address").focusout(function(){
+          check_address();
+        });
+
+        $("#pass").focusout(function(){
+          check_pass();
+        });
+
+
+        function check_fname() {
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#firstName").val();
+          if (a.test(b) && b !=''){
+            $("#ferror").hide();
+            $("#firstName").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#ferror").html("Should contain only characters");
+            $("#ferror").show();
+            $("#firstName").css("border-bottom", "2px solid red");
+            error_fname = true;
+          }
+        }
+
+        function check_uname(){
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#uname").val();
+          if (a.test(b) && b !=''){
+            $("#uerror").hide();
+            $("#uname").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#uerror").html("Should contain only characters");
+            $("#uerror").show();
+            $("#uname").css("border-bottom", "2px solid #F90A0A") ;
+            error_uname = true;
+          
+        
+          }
+        }
+
+        function check_location() {
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#location").val();
+          if (a.test(b) && b !=''){
+            $("#lerror").hide();
+            $("#location").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#lerror").html("Should contain only characters");
+            $("#lerror").show();
+            $("#location").css("border-bottom", "2px solid red");
+            error_loc = true;
+          }
+        }
+
+        function check_type() {
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#type").val();
+          if (a.test(b) && b !=''){
+            $("#terror").hide();
+            $("#type").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#terror").html("Should contain only characters");
+            $("#terror").show();
+            $("#type").css("border-bottom", "2px solid red");
+            error_type = true;
+          }
+        }
+
+        function check_email(){
+                var a =/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var b = $("#emailAddress").val();
+                if (a.test(b) && b !=''){
+                    $("#eerror").hide();
+                    $("#emailAddress").css("border-bottom","2px solid #34F458");
+
+                } else {
+                    $("#eerror").html("Should contain only charachters");
+                    $("#eerror").show();
+                    $("#emailAddress").css("border-bottom","2px solid #F90A0A");
+                    error_email = true;
+                }
+        }
+
+            function check_phone(){
+                var a = /([0-9]{10})|(\([0-9]{3}\)\s+[0-9]{3}\-[0-9]{4})/;
+                var b = $("#phoneNumber").val();
+                if (a.test(b) && b !=''){
+                    $("#perror").hide();
+                    $("#phoneNumber").css("border-bottom","2px solid #34F458");
+
+                } else {
+                    $("#perror").html("Should contain only Numbers");
+                    $("#perror").show();
+                    $("#phoneNumber").css("border-bottom","2px solid #F90A0A");
+                    error_phone = true;
+                }
+            }
+
+        function check_address() {
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#address").val();
+          if (a.test(b) && b !=''){
+            $("#aerror").hide();
+            $("#address").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#aerror").html("Should contain only characters");
+            $("#aerror").show();
+            $("#address").css("border-bottom", "2px solid red");
+            error_add = true;
+          }
+        }
+
+        function check_pass(){
+          var b = $("#pass").val();
+          if (b < 8) {
+              $("#passerror").html("Atleast 8 Characters");
+              $("#passerror").show();
+              $("#pass").css("border-bottom","2px solid #F90A0A");
+              error_pass = true;
+          } else {
+              $("#passerror").hide();
+              $("#pass").css("border-bottom","2px solid #34F458");
+          }
+        }
+
+        $("#formid").submit(function(){
+
+
+          error_fname =false;
+          error_uname =false;
+          error_loc = false;
+          error_email = false;
+          error_type= false;
+          error_phone= false;
+          error_add= false;
+          error_pass = false;
+
+          check_fname();
+          check_uname();
+          check_location();
+          check_email()
+          check_type();
+          check_phone();
+          check_address();
+          check_pass();
+
+
+        if (error_fname== false && error_uname== false && error_loc == false && error_email== false  && error_type == false && error_phone== false  && error_add == false && error_pass== false){
+           alert ("Registration Successfully");
+           return true;
+
+        } else{
+            alert("Please fill the form correctly");
+            return false;
+        }
+          
+
+      });
+      });
+    </script>
+</body>
+</html>

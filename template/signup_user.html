@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>singup_userpage</title>
+    <link rel="stylesheet" href="{% static 'css/userup.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    
+    
+    <form id="formid" action="signup" method="POST">
+        {%csrf_token%}
+        <section class="vh-60 gradient-custom">
+            <div class="container py-5 h-60">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                  <div class="card shadow-2-strong bg-dark text-white card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create New Account</h3>
+    
+                      <form>
+                        <div class="row">
+                          <div class="col-md-6 mb-3">
+                            <div class="form-outline">
+                              <input type="text" name="fname"  placeholder="First Name" id="firstName" class="form-control form-control-lg" />
+                              <span class="error_form" id="ferror"></span>
+                            </div>
+                          </div>
+    
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input type="text"  name="lname" id="lastName" placeholder="Last Name" class="form-control form-control-lg" />
+                              <span class="error_form" id="lerror"></span>
+                            </div>
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-4 d-flex align-items-center">
+                            <div class="form-outline datepicker w-100">
+                              <input type="text"  name="uname" placeholder="User Name" class="form-control form-control-lg" id="uname" />
+                              <span class="error_form" id="uerror"></span>
+                            </div>
+                          </div>
+    
+                          <div class="col-md-6 mb-4">
+                            <h6 class="mb-2 pb-1">Gender: </h6>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                                value="option1" checked />
+                              <label class="form-check-label" for="femaleGender">Female</label>
+                              
+                            </div>
+          
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                                value="option2" />
+                              <label class="form-check-label" for="maleGender">Male</label>
+                            </div>
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                              <input type="email"  name="mail" placeholder="Email" id="emailAddress" class="form-control form-control-lg" />
+                              <span class="error_form" id="eerror"></span>
+                            </div>
+                          </div>
+    
+                          <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                              <input type="tel" id="phoneNumber" name="number" placeholder="Phone Number" class="form-control form-control-lg" />
+                              <span class="error_form" id="perror"></span>
+                            </div>
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-2 pb-2">
+                            <div class="form-outline">
+                              <input type="file"  name="photo" class="form-control form-control-lg" />
+                              <label class="form-label" for="form2Example27">Profile Photo</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-2 pb-2">
+                            <div class="form-outline">
+                              <input type="file"  name="resume" class="form-control form-control-lg" />
+                              <label class="form-label" for="form2Example27">Resume</label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4 d-flex align-items-center">
+                              <div class="form-outline datepicker w-80">
+                                <input type="text" name="password" placeholder="password" class="form-control form-control-lg" id="pass" />
+                                <span class="error_form" id="passerror"></span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class=" pt-2">
+                          <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                        </div>
+          
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </form>
+    <script type="text/javascript">
+      $(function(){
+        $("#ferror").hide();
+        $("#lerror").hide();
+        $("#uerror").hide();
+        $("#eerror").hide();
+        $("#perror").hide();
+        $("#passerror").hide();
+
+        var error_fname =false;
+        var error_lname = false;
+        var error_username = false;
+        var error_email = false;
+        var error_phone= false;
+        var error_pass = false;
+
+        $("#firstName").focusout(function(){
+          check_fname();
+        });
+
+        $("#lastName").focusout(function(){
+          check_lname();
+        });
+
+        $("#uname").focusout(function(){
+          check_uname();
+        });
+
+        $("#emailAddress").focusout(function(){
+          check_email();
+        });
+
+        $("#phoneNumber").focusout(function(){
+          check_phone();
+        });
+
+        $("#pass").focusout(function(){
+          check_pass();
+        });
+        
+
+        function check_fname() {
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#firstName").val();
+          if (a.test(b) && b !=''){
+            $("#ferror").hide();
+            $("#firstName").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#ferror").html("Should contain only characters");
+            $("#ferror").show();
+            $("#firstName").css("border-bottom", "2px solid red");
+            error_fname = true;
+          }
+        }
+
+
+        function check_lname() {
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#lastName").val();
+          if (a.test(b) && b !=''){
+            $("#lerror").hide();
+            $("#lastName").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#lerror").html("Should contain only characters");
+            $("#lerror").show();
+            $("#lastName").css("border-bottom", "2px solid red");
+            error_lname = true;
+          }
+        }
+
+
+        function check_uname(){
+          var a = /^[a-zA-Z\s]+$/;
+          var b = $("#uname").val();
+          if (a.test(b) && b !=''){
+            $("#uerror").hide();
+            $("#uname").css("border-bottom","2px solid #34F458");
+
+          } else{
+            $("#uerror").html("Should contain only characters");
+            $("#uerror").show();
+            $("#uname").css("border-bottom", "2px solid #F90A0A") ;
+            error_username = true;
+          
+        
+          }
+        }
+
+        function check_email(){
+                var a =/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var b = $("#emailAddress").val();
+                if (a.test(b) && b !=''){
+                    $("#eerror").hide();
+                    $("#emailAddress").css("border-bottom","2px solid #34F458");
+
+                } else {
+                    $("#eerror").html("Should contain only charachters");
+                    $("#eerror").show();
+                    $("#emailAddress").css("border-bottom","2px solid #F90A0A");
+                    error_email = true;
+                }
+            }
+
+            function check_phone(){
+                var a = /([0-9]{10})|(\([0-9]{3}\)\s+[0-9]{3}\-[0-9]{4})/;
+                var b = $("#phoneNumber").val();
+                if (a.test(b) && b !=''){
+                    $("#perror").hide();
+                    $("#phoneNumber").css("border-bottom","2px solid #34F458");
+
+                } else {
+                    $("#perror").html("Should contain only Numbers");
+                    $("#perror").show();
+                    $("#phoneNumber").css("border-bottom","2px solid #F90A0A");
+                    error_phone = true;
+                }
+            }
+
+        function check_pass(){
+          var b = $("#pass").val();
+          if (b < 8) {
+              $("#passerror").html("Atleast 8 Characters");
+              $("#passerror").show();
+              $("#pass").css("border-bottom","2px solid #F90A0A");
+              error_pass = true;
+          } else {
+              $("#passerror").hide();
+              $("#pass").css("border-bottom","2px solid #34F458");
+          }
+        }
+
+      $("#formid").submit(function(){
+
+        error_fname =false;
+        error_lname =false;
+        error_username =false;
+        error_email =false;
+        error_phone =false;
+        error_pass =false;
+
+        check_fname();
+        check_lname();
+        check_uname();
+        check_email();
+        check_phone();
+        check_pass();
+
+        if (error_fname== false && error_lname== false && error_uname== false && error_email== false && error_phone== false && error_pass== false){
+           alert ("Registration Successfully");
+           return true;
+
+        } else{
+            alert("Please fill the form correctly");
+            return false;
+        }
+
+      });
+      });
+    </script>
+      
+</body>
+</html>

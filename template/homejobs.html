@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home_jobs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body> 
+  <center><h1>All Jobs</h1></center><br><br>
+  <div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Vacancy</th>
+            <th scope="col">Salary</th>
+            <th scope="col">End Date</th>
+            <!-- <th scope="col">Job Details</th> -->
+          </tr>
+        </thead>
+          {% for job in jobs %}
+        <tbody>
+          <tr>
+            <td scope="row">{{job.id}}</td>
+            <td>{{job.title}}</td>
+            <td>{{job.vacancy}}</td>
+            <td>{{job.salary}}</td>
+            <td>{{job.end_date}}</td>
+            <!-- <td><a type="button" href="/details/{{job.id}}" class="btn btn-outline-danger">Details</a></td> -->
+            <!-- <td><a type="button" href="/apply/{{job.id}}" class="btn btn-outline-success">Apply</a></td> -->
+        </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</body>
+</html>
